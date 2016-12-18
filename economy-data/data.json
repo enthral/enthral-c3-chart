@@ -1,0 +1,7 @@
+{
+	"tsv": "components/examples/linechart/economy-data/data.tsv",
+	"dateFormat": "%d-%b-%y",
+	"xField": "date",
+	"yField": "close",
+	"yLabel": "Price ($)"
+}
