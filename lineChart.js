@@ -2,12 +2,14 @@
 	"use strict";
 	var LineGraph = function(authorData, deps) {
 		this.authorData = authorData;
+		this.dataPath = authorData.enthral.dataPath;
 		this.d3 = deps.d3;
 	};
 	LineGraph.prototype = {
 		setupView: function(container) {
 			var d3 = this.d3,
-				tsv = this.authorData.tsv,
+				tsvFile = this.authorData.tsv,
+				tsvUrl = (tsvFile.indexOf('://') > -1) ? tsvFile : this.dataPath + tsvFile,
 				dateFormat = this.authorData.dateFormat,
 				xField = this.authorData.xField,
 				yField = this.authorData.yField,
@@ -40,7 +42,7 @@
 				.x(function(d) { return x(d[xField]); })
 				.y(function(d) { return y(d[yField]); });
 
-			d3.tsv(tsv, function(d) {
+			d3.tsv(tsvUrl, function(d) {
 				d[xField] = parseTime(d[xField]);
 				d[yField] = +d[yField];
 				return d;

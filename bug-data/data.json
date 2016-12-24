@@ -1,5 +1,5 @@
 {
-	"tsv": "components/examples/linechart/bug-data/data.tsv",
+	"tsv": "data.tsv",
 	"dateFormat": "%Y-%m-%d",
 	"xField": "date",
 	"yField": "ranking",
