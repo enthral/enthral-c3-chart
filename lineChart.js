@@ -78,6 +78,7 @@
 					yField = props.field;
 				console.log('Drawing line for ', yField);
 				var line = d3.line()
+					.curve(d3.curveBasis)
 					.x(function(d) { return x(d[xField]); })
 					.y(function(d) { return y(d[yField]); });
 				var line = canvas.graph.append("path")
