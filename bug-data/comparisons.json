@@ -1,0 +1,42 @@
+{
+	"tsv": "data.tsv",
+	"dateFormat": "%Y-%m-%d",
+	"xField": "date",
+	"lines": [
+		{
+			"field": "creation",
+			"label": "Content - Creation",
+			"color": "#1D72AA"
+		},
+		{
+			"field": "library",
+			"label": "Content - Library",
+			"color": "#C44440"
+		},
+		{
+			"field": "marking",
+			"label": "Content - Marking",
+			"color": "#8CBB4E"
+		},
+		{
+			"field": "notifications",
+			"label": "Notifications",
+			"color": "#795892"
+		},
+		{
+			"field": "onboarding",
+			"label": "Onboarding",
+			"color": "#0099B2"
+		},
+		{
+			"field": "learning",
+			"label": "Content - Learning",
+			"color": "#F38533"
+		},
+		{
+			"field": "users",
+			"label": "User Management",
+			"color": "#8BAAD1"
+		}
+	]
+}

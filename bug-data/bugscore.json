@@ -1,0 +1,12 @@
+{
+	"tsv": "data.tsv",
+	"dateFormat": "%Y-%m-%d",
+	"xField": "date",
+	"lines": [
+		{
+			"field": "ranking",
+			"label": "Bug Score",
+			"color": "green"
+		}
+	]
+}

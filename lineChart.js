@@ -2,9 +2,9 @@
 	"use strict";
 
 	function addStylesheet (lineChart, container) {
-		var lineColor = lineChart.authorData.lineColor || 'steelblue',
+		var defaultLineColor = 'steelblue',
 			stylesheetElm = document.createElement("style"),
-			rule = ".line { fill: none; stroke: " + lineColor + "; stroke-width: 1.5px; }";
+			rule = ".line { fill: none; stroke: " + defaultLineColor + "; stroke-width: 1.5px; }";
 		container.appendChild(stylesheetElm);
 		stylesheetElm.sheet.insertRule(rule, 0);
 	}
@@ -34,28 +34,35 @@
 			tsvUrl = (props.tsv.indexOf('://') > -1) ? props.tsv : lineChart.dataPath + props.tsv,
 			dateFormat = props.dateFormat,
 			xField = props.xField,
-			yField = props.yField,
-			yLabel = props.yLabel,
+			lineProps = props.lines,
 			parseTime = d3.timeParse(dateFormat),
 			x = d3.scaleTime()
 				.rangeRound([0, canvas.width]),
 			y = d3.scaleLinear()
 				.rangeRound([canvas.height, 0]);
 
-		var line = d3.line()
-			.x(function(d) { return x(d[xField]); })
-			.y(function(d) { return y(d[yField]); });
-
 		d3.tsv(tsvUrl, function(d) {
-			// Map the xField to be a real date object, not a date string.
+			// Parse the x value into a date, the y values into floats.
 			d[xField] = parseTime(d[xField]);
-			d[yField] = parseInt(d[yField], 10);
+			for (var i = 0; i < lineProps.length; i++) {
+				var field = lineProps[i].field;
+				d[field] = parseFloat(d[field]);
+			}
 			return d;
 		}, function(error, data) {
 			if (error) throw error;
 
+			// Get the min and max values for each access.s
+			var allYValues = [];
+			for (var i = 0; i < data.length; i++) {
+				var item = data[i];
+				for (var l = 0; l < lineProps.length; l++) {
+					var field = lineProps[l].field;
+					allYValues.push(item[field]);
+				}
+			}
 			x.domain(d3.extent(data, function(d) { return d[xField]; }));
-			y.domain(d3.extent(data, function(d) { return d[yField]; }));
+			y.domain(d3.extent(allYValues));
 
 			canvas.graph.append("g")
 				.attr("class", "axis axis--x")
@@ -64,19 +71,23 @@
 
 			canvas.graph.append("g")
 				.attr("class", "axis axis--y")
-				.call(d3.axisLeft(y))
-				.append("text")
-				.attr("fill", "#000")
-				.attr("transform", "rotate(-90)")
-				.attr("y", 6)
-				.attr("dy", "0.71em")
-				.style("text-anchor", "end")
-				.text(yLabel);
+				.call(d3.axisLeft(y));
 
-			canvas.graph.append("path")
-				.datum(data)
-				.attr("class", "line")
-				.attr("d", line);
+			for (var i = 0; i < lineProps.length; i++) {
+				var props = lineProps[i],
+					yField = props.field;
+				console.log('Drawing line for ', yField);
+				var line = d3.line()
+					.x(function(d) { return x(d[xField]); })
+					.y(function(d) { return y(d[yField]); });
+				var line = canvas.graph.append("path")
+					.datum(data)
+					.attr("class", "line")
+					.attr("d", line);
+				if (props.color) {
+					line.style("stroke", props.color);
+				}
+			}
 		});
 	};
 

@@ -2,6 +2,10 @@
 	"tsv": "data.tsv",
 	"dateFormat": "%d-%b-%y",
 	"xField": "date",
-	"yField": "close",
-	"yLabel": "Price ($)"
+	"lines": [
+		{
+			"field": "close",
+			"label": "Price ($)"
+		}
+	]
 }
