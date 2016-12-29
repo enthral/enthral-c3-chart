@@ -5,6 +5,9 @@
 		"type": "date",
 		"format": "%d-%b-%y"
 	},
+	"y": {
+		"format": "$,"
+	},
 	"showPoints": true,
 	"lines": [
 		{

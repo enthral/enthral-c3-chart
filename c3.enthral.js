@@ -45,10 +45,10 @@
 				chartType = props.type || 'line',
 				xField = props.x.field,
 				lines = processLineProps(props.lines),
-				// dateFormat = props.x.format,
-				// formatTime = d3.time.format(dateFormat),
-				// parseTime = formatTime.parse,
 				showPoints = props.showPoints || false,
+				defaultNumberFormat = '',
+				numberFormatY = (props.y && props.y.format) ? props.y.format : defaultNumberFormat,
+				formatY = d3.format(numberFormatY),
 				parseX,
 				formatX,
 				xAxisType;
@@ -58,7 +58,7 @@
 				parseX = formatX.parse;
 				xAxisType = 'timeseries';
 			} else {
-				var numberFormat = props.x.format || '.1f';
+				var numberFormat = props.x.format || defaultNumberFormat;
 				formatX = d3.format(numberFormat);
 				parseX = parseFloat;
 				xAxisType = 'indexed';
