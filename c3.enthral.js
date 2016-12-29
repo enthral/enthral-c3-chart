@@ -12,7 +12,8 @@
 		var lines = {
 			fields: [],
 			labels: {},
-			colors: {}
+			colors: {},
+			groups: []
 		};
 		for (var i = 0; i < lineProps.length; i++) {
 			var line = lineProps[i];
@@ -22,6 +23,14 @@
 			}
 			if (line.color) {
 				lines.colors[line.field] = line.color;
+			}
+			if (line.group !== undefined) {
+				if (!lines.groups[line.group]) {
+					lines.groups[line.group] = [];
+				}
+				if (lines.groups[line.group].indexOf(line.field) < 0) {
+					lines.groups[line.group].push(line.field);
+				}
 			}
 		}
 		return lines;
@@ -75,6 +84,7 @@
 						// one of 'line', 'spline', 'step', 'area', 'area-spline', 'area-step', 'bar', 'scatter', 'pie', 'donut', 'gauge'
 						type: chartType,
 						names: lines.labels,
+						groups: lines.groups,
 						colors: lines.colors
 					},
 					point: {
