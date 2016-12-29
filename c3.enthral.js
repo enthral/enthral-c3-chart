@@ -96,7 +96,7 @@
 							tick: {
 								format: props.x.format,
 								culling: {max: 10},
-								count: 5,
+								count: props.x.numTicks,
 								rotate: 90,
 								outer: false
 							}

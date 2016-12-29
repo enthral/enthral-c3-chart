@@ -4,6 +4,7 @@
 	"x": {
 		"field": "date",
 		"type": "date",
+		"numTicks": 30,
 		"format": "%Y-%m-%d"
 	},
 	"lines": [
