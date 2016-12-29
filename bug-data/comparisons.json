@@ -1,7 +1,11 @@
 {
 	"tsv": "data.tsv",
-	"dateFormat": "%Y-%m-%d",
-	"xField": "date",
+	"type": "area",
+	"x": {
+		"field": "date",
+		"type": "date",
+		"format": "%Y-%m-%d"
+	},
 	"lines": [
 		{
 			"field": "creation",

@@ -1,7 +1,11 @@
 {
 	"tsv": "data.tsv",
-	"dateFormat": "%d-%b-%y",
-	"xField": "date",
+	"x": {
+		"field": "date",
+		"type": "date",
+		"format": "%d-%b-%y"
+	},
+	"showPoints": true,
 	"lines": [
 		{
 			"field": "close",

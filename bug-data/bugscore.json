@@ -1,7 +1,10 @@
 {
 	"tsv": "data.tsv",
-	"dateFormat": "%Y-%m-%d",
-	"xField": "date",
+	"x": {
+		"field": "date",
+		"type": "date",
+		"format": "%Y-%m-%d"
+	},
 	"lines": [
 		{
 			"field": "ranking",
