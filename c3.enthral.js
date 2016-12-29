@@ -99,28 +99,14 @@
 								count: 5,
 								rotate: 90,
 								outer: false
-							},
-							padding: {
-								left: 0,
-								right: 0
 							}
 						},
 						y: {
 							tick: {
 								outer: false,
-								format: d3.format('$,')
-							},
-							padding: {
-								top: 0,
-								bottom: 0
+								format: formatY
 							}
 						}
-					},
-					padding: {
-						top: 20,
-						bottom: 20,
-						left: 20,
-						right: 20
 					}
 				});
 			});

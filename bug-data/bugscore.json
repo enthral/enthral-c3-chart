@@ -1,5 +1,6 @@
 {
 	"tsv": "data.tsv",
+	"type": "area-spline",
 	"x": {
 		"field": "date",
 		"type": "date",
@@ -9,7 +10,7 @@
 		{
 			"field": "ranking",
 			"label": "Bug Score",
-			"color": "green"
+			"color": "#FF0000"
 		}
 	]
 }
