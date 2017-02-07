@@ -1,12 +1,5 @@
-(function () {
+define(['enthral', 'd3/v3', 'c3', 'css!c3/styles'], function (enthral, d3, c3) {
 	"use strict";
-
-	var C3Enthral = function(authorData, deps) {
-		this.authorData = authorData;
-		this.dataPath = authorData.enthral.dataPath;
-		this.c3 = deps.c3;
-		this.d3 = deps.d3;
-	};
 
 	function processLineProps(lineProps) {
 		var lines = {
@@ -36,12 +29,16 @@
 		return lines;
 	}
 
+	var C3Enthral = function(config) {
+		this.container = config.container;
+		this.dataPath = config.meta.content.path;
+	};
+
 	C3Enthral.prototype = {
-		setupView: function(container) {
-			var c3 = this.c3,
-				d3 = this.d3,
-				props = this.authorData,
-				tsvUrl = (props.tsv.indexOf('://') > -1) ? props.tsv : this.dataPath + props.tsv,
+		render: function(props) {
+			var self = this,
+				dataPath = this.dataPath,
+				tsvUrl = (props.tsv.indexOf('://') > -1) ? props.tsv : dataPath + props.tsv,
 				chartType = props.type || 'line',
 				xField = props.x.field,
 				lines = processLineProps(props.lines),
@@ -74,7 +71,7 @@
 			}, function(error, data) {
 				if (error) throw error;
 				var chart = c3.generate({
-					bindto: container,
+					bindto: self.container,
 					data: {
 						json: data,
 						keys:{
@@ -113,13 +110,9 @@
 		}
 	};
 
-	C3Enthral.enthralPropTypes = {};
-
-	C3Enthral.enthralDependencies = {
-		'c3': 'c3',
-		'd3': 'd3.v3',
-		'css': 'c3.css'
+	C3Enthral.enthralPropTypes = {
+		// tsv: PropTypes.string.isRequired
 	};
 
-	window.C3Enthral = C3Enthral;
-})();
+	return C3Enthral;
+});
