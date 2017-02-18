@@ -9,37 +9,37 @@
 	},
 	"lines": [
 		{
-			"field": "creation",
+			"field": "area - creation",
 			"label": "Content - Creation",
 			"color": "#1D72AA"
 		},
 		{
-			"field": "library",
+			"field": "area - library",
 			"label": "Content - Library",
 			"color": "#C44440"
 		},
 		{
-			"field": "marking",
+			"field": "area - marking",
 			"label": "Content - Marking",
 			"color": "#8CBB4E"
 		},
 		{
-			"field": "notifications",
+			"field": "area - notifications",
 			"label": "Notifications",
 			"color": "#795892"
 		},
 		{
-			"field": "onboarding",
+			"field": "area - onboarding",
 			"label": "Onboarding",
 			"color": "#0099B2"
 		},
 		{
-			"field": "learning",
+			"field": "area - student learning",
 			"label": "Content - Learning",
 			"color": "#F38533"
 		},
 		{
-			"field": "users",
+			"field": "area - users",
 			"label": "User Management",
 			"color": "#8BAAD1"
 		}
