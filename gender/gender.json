@@ -1,0 +1,19 @@
+{
+	"title": "Gender equality at Startmate",
+	"donut": false,
+	"legend": {
+		"show": true,
+		"position": "right"
+	},
+	"format": "%",
+	"segments": [
+		{
+			"label": "Gender diverse teams",
+			"value": 0.222
+		},
+		{
+			"label": "Single founder genders",
+			"value": 0.778
+		}
+	]
+}
